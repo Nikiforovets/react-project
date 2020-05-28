@@ -1,0 +1,29 @@
+.user-data {
+    display: flex;
+  }
+  
+  .user-data .link {
+    color: #5cb85c;
+    text-decoration: none;
+  }
+  
+  .user-data .link:hover {
+    text-decoration: underline;
+  }
+  
+  .user-data img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+  }
+  
+  .user-data p {
+    font-size: 12px;
+    margin: 0px;
+    color: lightgrey;
+  }
+  
+  .user-data .link p:hover {
+    text-decoration: none;
+  }

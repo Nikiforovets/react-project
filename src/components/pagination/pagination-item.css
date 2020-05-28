@@ -1,0 +1,23 @@
+.pagination-btn {
+  margin: 0px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: solid 1px lightgray;
+  border-radius: 3px;
+}
+
+.pagination-btn:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.current {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.current:hover {
+  background-color: #5cb85c;
+  color: white;
+}

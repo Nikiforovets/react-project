@@ -1,0 +1,34 @@
+.like {
+  height: 22px;
+  border: solid 1px #5cb85c;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+  padding: 0px 6px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.like:hover {
+  cursor: pointer;
+}
+
+.not-favorite {
+  background-color: white;
+  color: #5cb85c;
+}
+
+.not-favorite:hover {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.favorite {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.favorite:hover {
+  background-color: white;
+  color: #5cb85c;
+}

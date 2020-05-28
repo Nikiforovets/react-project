@@ -1,0 +1,41 @@
+.follow-button{
+    height: 22px;
+    border: solid 1px;
+    border-radius: 3px;
+    font-size: 14px;
+    text-align: center;
+    padding: 0px 6px;
+    margin-left: 15px;
+    margin-right: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: inline-block;
+}
+
+.follow-button:hover{
+    cursor: pointer;
+}
+
+.follow{
+    border-color:gray;
+    background-color: lightgray;
+    color: gray;
+}
+
+.follow:hover{
+    border-color:lightgray;
+    background-color: gray;
+    color: lightgray;
+}
+
+.unfollow{
+    border-color:lightgray;
+    background-color: gray;
+    color: lightgray;
+}
+
+.unfollow:hover{
+    border-color:gray;
+    background-color: lightgray;
+    color: gray;
+}

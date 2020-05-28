@@ -1,0 +1,45 @@
+a {
+  text-decoration: none;
+}
+
+.article-item .like {
+  float: right;
+}
+
+.article-item::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: lightgray;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.article-data a {
+  text-decoration: none;
+}
+
+.article-data h3 {
+  margin-bottom: 0px;
+}
+
+.article-data a h3 {
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  /* margin-bottom: 10px; */
+}
+
+.article-data a span{
+  color: lightgray;
+  font-size: 12px;
+}
+
+.article-data p {
+  margin-top: 5px;
+}
+
+.article-data a p{
+  color: gray;
+}

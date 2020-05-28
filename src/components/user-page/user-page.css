@@ -1,0 +1,21 @@
+.user-page-banner{
+    padding-top: 40px;
+    padding-bottom: 120px;
+    height: 100px;
+    background-color: #f3f3f3;
+    color: #333;
+    text-align: center;
+}
+
+.user-page-banner h3{
+    margin-bottom: 0px;
+}
+
+.user-page-banner div{
+    float: right;
+    margin-right: 50px;
+}
+
+.author-image{
+    border-radius: 50%;
+}
