@@ -5,7 +5,7 @@ import './settings.css';
 
 class Settings extends React.Component {
     logout = () => {
-        this.props.setUserData([]);
+        this.props.setUserData('');
         localStorage.removeItem('token');
         this.props.history.push('/');
     }

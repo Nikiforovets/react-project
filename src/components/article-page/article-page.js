@@ -28,21 +28,22 @@ class ArticlePage extends React.Component {
 
   render() {
     const { loading, articleData, articleData: { article }, loggedInUserData } = this.props;
-    let articleControl = '';
+
     if (loading === true || articleData.length === 0) {
       return <Spinner />;
     }
-    console.log(loggedInUserData);
-    if (article.author.username !== loggedInUserData.user.username) {
-      articleControl = <>
+    let articleControl =
+      <>
         <Follow following={article.author.following} username={article.author.username} />
         <Like favoritesCount={article.favoritesCount} favorited={article.favorited} label='Favorite article' />
       </>
-    } else {
-      articleControl = <>
-        <button className='edit-article'>Edit article</button>
-        <button className='delete-article'>Delete article</button>
-      </>
+    if (loggedInUserData) {
+      if (article.author.username === loggedInUserData.user.username) {
+        articleControl = <>
+          <button className='edit-article'>Edit article</button>
+          <button className='delete-article'>Delete article</button>
+        </>
+      }
     }
     return (<div>
       <div className='article-page-banner'>

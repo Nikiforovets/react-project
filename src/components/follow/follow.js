@@ -15,10 +15,13 @@ const Follow = ({ following, username = '' }) => {
     }
 
     const followUser = () => {
-        if (following) {
-            swapService.deleteFollow(username);
+        if (localStorage.getItem('token')) {
+            if (following) {
+                swapService.deleteFollow(username);
+            } else {
+                swapService.postFollow(username);
+            }
         } else {
-            swapService.postFollow(username);
         }
     }
 

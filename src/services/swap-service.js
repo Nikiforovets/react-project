@@ -35,12 +35,12 @@ class SwapService {
   }
 
   getCurrentUserInfo = async () => {
-    const res = await fetch(`${this._apiBase}/user`, {
-      method: "GET",
-      headers: { "authorization": `Token ${localStorage.getItem('token')}` }
-    });
-    const resource = await res.json();
-    return resource;
+    if (localStorage.getItem('token')) {
+      const res = await this.getResource("/user");
+      return res;
+    } else {
+      return '';
+    }
   }
 
   postResource = async (url, data) => {
