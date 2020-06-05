@@ -31,7 +31,7 @@ class Header extends React.Component {
       userAuthorize =
         <>
           <li><Link to={`/editor`}>New Article</Link></li>
-          <li><Link to={`/`}>Settings</Link></li>
+          <li><Link to={`/settings`}>Settings</Link></li>
           <li><Link to={`/`}>{username}</Link></li>
         </>
     }
