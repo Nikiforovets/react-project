@@ -1,7 +1,7 @@
 import React from 'react';
 import SwapService from '../../services/swap-service';
 import { connect } from 'react-redux';
-import { listLoading, userDataLoaded } from '../../actions';
+import { pageLoading, userDataLoaded } from '../../actions';
 import { withRouter } from "react-router-dom";
 import Spinner from '../spinner';
 import UserData from '../user-data';
@@ -15,8 +15,8 @@ class UserPage extends React.Component {
     swapService = new SwapService();
 
     componentDidMount() {
-        const { listLoading, userDataLoaded } = this.props;
-        listLoading();
+        const { pageLoading, userDataLoaded } = this.props;
+        pageLoading();
         this.swapService.getUserProfile(this.props.history.location.pathname).then((data) => {
             userDataLoaded(data);
             console.log(data);
@@ -40,7 +40,7 @@ class UserPage extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <ArticleList />
+                    <ArticleList author={profile.username} />
                 </div>
             </div >
         )
@@ -49,14 +49,14 @@ class UserPage extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.loading,
+        loading: state.pageLoading,
         userProfileData: state.userProfileData
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        listLoading: () => dispatch(listLoading()),
+        pageLoading: () => dispatch(pageLoading()),
         userDataLoaded: data => dispatch(userDataLoaded(data))
     }
 }

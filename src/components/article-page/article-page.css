@@ -31,3 +31,38 @@
     margin-top: 60px;
     margin-bottom: 25px;
 }
+
+.edit-article{
+    margin: 0px;
+    height: 22px;
+    border: lightgray solid 1px;
+    border-radius: 3px;
+    color: lightgray;
+    background-color: gray;
+    font-size: 14px;
+    text-align: center;
+    padding: 0px 6px;
+    margin-left: 15px;
+    margin-right: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.delete-article{
+    margin: 0px;
+    height: 22px;
+    border: #8c0101 solid 1px;
+    border-radius: 3px;
+    color: #8c0101;
+    background-color: lightgray;
+    font-size: 14px;
+    text-align: center;
+    padding: 0px 6px;
+    margin-right: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: inline-block;
+    cursor: pointer;
+}

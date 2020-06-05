@@ -11,16 +11,16 @@ class ArticleList extends React.Component {
   swapService = new SwapService();
 
   componentDidMount = () => {
-    const { listLoaded, listLoading } = this.props;
-    //listLoading();
-    this.swapService.getArticlesList(this.props.articlesOffset).then((data) => {
+    const { listLoaded, listLoading, author } = this.props;
+    listLoading();
+    this.swapService.getArticlesList(this.props.articlesOffset, author).then((data) => {
       listLoaded(data.articles, data.articlesCount);
     });
   };
 
   changePage = (id) => {
     const { changeOffset, listLoaded, listLoading } = this.props;
-    //listLoading();
+    listLoading();
     changeOffset(id);
     this.swapService.getArticlesList(this.props.articlesOffset).then((data) => {
       listLoaded(data.articles, data.articlesCount);
@@ -34,38 +34,38 @@ class ArticleList extends React.Component {
       pagesList.push(i);
     }
 
-    //if (this.props.loading) return <Spinner />;
-    //else {
-    return (
-      <>
-        <div className='list-body'>
-          {this.props.articles.map((element) => (
-            <ArticleItem
-              props={element}
-              key={element.updatedAt}
-            />
-          ))}
-          <div className='pagination'>
-            {pagesList.map((element) => (
-              <PaginationItem
-                currentPage={currentPage}
-                number={element}
-                changePage={(id) => this.changePage(id)}
-                key={`page` + element}
+    if (this.props.loading) return <Spinner />;
+    else {
+      return (
+        <>
+          <div className='list-body'>
+            {this.props.articles.map((element) => (
+              <ArticleItem
+                props={element}
+                key={element.updatedAt}
               />
             ))}
+            <div className='pagination'>
+              {pagesList.map((element) => (
+                <PaginationItem
+                  currentPage={currentPage}
+                  number={element}
+                  changePage={(id) => this.changePage(id)}
+                  key={`page` + element}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </>
-    );
-    //}
+        </>
+      );
+    }
   };
 }
 
 const mapStateToProps = (state) => {
   return {
     articles: state.articles,
-    loading: state.loading,
+    loading: state.listLoading,
     articlesCount: state.articlesCount,
     articlesLimit: state.articlesLimit,
     articlesOffset: state.articlesOffset,

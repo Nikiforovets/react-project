@@ -1,4 +1,4 @@
-import { LIST_LOADED, LIST_LOADING, CHANGE_OFFSET, ARTICLE_LOADED, USER_DATA_LOADED } from './constants';
+import {SET_USER_DATA, LIST_LOADED, LIST_LOADING, CHANGE_OFFSET, ARTICLE_LOADED, USER_DATA_LOADED, PAGE_LOADING } from './constants';
 
 const listLoaded = (newList, count) => {
   return {
@@ -13,6 +13,12 @@ const listLoading = () => {
     type: LIST_LOADING
   };
 };
+
+const pageLoading = () => {
+  return {
+    type: PAGE_LOADING
+  }
+}
 
 const changeOffset = id => {
   return {
@@ -35,4 +41,11 @@ const userDataLoaded = data => {
   }
 }
 
-export { listLoaded, listLoading, changeOffset, articleLoaded, userDataLoaded };
+const setUserData = (data) => {
+  return {
+    type: SET_USER_DATA,
+    data: data
+  }
+}
+
+export { setUserData, listLoaded, listLoading, changeOffset, articleLoaded, userDataLoaded, pageLoading };

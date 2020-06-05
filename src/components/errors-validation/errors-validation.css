@@ -1,0 +1,12 @@
+.errors-list{
+    padding-left: 40px;
+    text-align: left;
+}
+
+.errors-list li{
+    color: red;
+}
+
+.errors-list li span{
+    color: black;
+}
