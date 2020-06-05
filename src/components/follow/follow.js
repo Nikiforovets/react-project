@@ -1,7 +1,10 @@
 import React from 'react';
+import SwapService from '../../services/swap-service';
 import './follow.css';
 
 const Follow = ({ following, username = '' }) => {
+    const swapService = new SwapService;
+
     let followString, style;
     if (following) {
         followString = 'Unfollow';
@@ -10,11 +13,19 @@ const Follow = ({ following, username = '' }) => {
         followString = 'Follow';
         style = 'follow-button unfollow';
     }
+
+    const followUser = () => {
+        if (following) {
+            swapService.deleteFollow(username);
+        } else {
+            swapService.postFollow(username);
+        }
+    }
+
     return (
-        <div className={style}>
+        <div onClick={followUser} className={style}>
             <span>+ {followString} {username}</span>
         </div>
-
     );
 }
 

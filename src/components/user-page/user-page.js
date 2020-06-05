@@ -19,7 +19,6 @@ class UserPage extends React.Component {
         pageLoading();
         this.swapService.getUserProfile(this.props.history.location.pathname).then((data) => {
             userDataLoaded(data);
-            console.log(data);
         });
     }
 

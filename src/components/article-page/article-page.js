@@ -21,7 +21,6 @@ class ArticlePage extends React.Component {
         this.swapService.getCurrentUserInfo()
           .then((userdata) => {
             this.props.setUserData(userdata);
-            console.log(userdata);
             articleLoaded(data);
           });
       });

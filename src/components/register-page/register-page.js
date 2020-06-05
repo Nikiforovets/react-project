@@ -31,6 +31,7 @@ class RegisterPage extends React.Component {
                     this.swapService.getCurrentUserInfo().then((data) => {
                         this.props.setUserData(data);
                     });
+                    this.props.history.push('/');
                 }
             })
         this.setState({

@@ -10,27 +10,57 @@ import './article-list.css';
 class ArticleList extends React.Component {
   swapService = new SwapService();
 
+  state = {
+    feed: ''
+  }
+
   componentDidMount = () => {
     const { listLoaded, listLoading, author } = this.props;
     listLoading();
-    this.swapService.getArticlesList(this.props.articlesOffset, author).then((data) => {
+    this.swapService.getArticlesList(0, author, '').then((data) => {
       listLoaded(data.articles, data.articlesCount);
     });
   };
 
-  changePage = (id) => {
-    const { changeOffset, listLoaded, listLoading } = this.props;
+  changePage = (id, feed = '') => {
+    const { changeOffset, listLoaded, listLoading, author } = this.props;
     listLoading();
     changeOffset(id);
-    this.swapService.getArticlesList(this.props.articlesOffset).then((data) => {
+    this.swapService.getArticlesList((id - 1) * 10, author, feed).then((data) => {
       listLoaded(data.articles, data.articlesCount);
     });
   };
 
+  showGlobalFeed = (e) => {
+    this.changePage(1, '');
+    this.setState({ feed: '' })
+  }
+
+  showYourFeed = (e) => {
+    if (localStorage.getItem('token')) {
+      this.changePage(1, '/feed');
+      this.setState({ feed: '/feed' })
+    } else {
+      this.props.redirect();
+    }
+  }
+
   render = () => {
-    const { articlesCount, articlesLimit, currentPage } = this.props;
+    const { articlesCount, articlesLimit, currentPage, author } = this.props;
+    console.log(author);
     let pagesList = [];
-    for (let i = 1; i <= articlesCount / articlesLimit; i++) {
+    let tabs;
+    if (!author) {
+      tabs =
+        <div className='tab-panel'>
+          <button className='your-feed' onClick={this.showYourFeed}>Your feed</button>
+          <button className='global-feed' onClick={this.showGlobalFeed}>Global feed</button>
+        </div>
+    } else {
+      tabs = '';
+    }
+
+    for (let i = 1; i <= (articlesCount / articlesLimit) + 1; i++) {
       pagesList.push(i);
     }
 
@@ -38,6 +68,7 @@ class ArticleList extends React.Component {
     else {
       return (
         <>
+          {tabs}
           <div className='list-body'>
             {this.props.articles.map((element) => (
               <ArticleItem
@@ -50,7 +81,7 @@ class ArticleList extends React.Component {
                 <PaginationItem
                   currentPage={currentPage}
                   number={element}
-                  changePage={(id) => this.changePage(id)}
+                  changePage={(id) => this.changePage(id, this.state.feed)}
                   key={`page` + element}
                 />
               ))}
@@ -68,7 +99,6 @@ const mapStateToProps = (state) => {
     loading: state.listLoading,
     articlesCount: state.articlesCount,
     articlesLimit: state.articlesLimit,
-    articlesOffset: state.articlesOffset,
     currentPage: state.currentPage,
   };
 };

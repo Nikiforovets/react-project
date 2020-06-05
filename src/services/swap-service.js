@@ -2,18 +2,24 @@ class SwapService {
   _apiBase = 'https://conduit.productionready.io/api';
 
   getResource = async url => {
-    const res = await fetch(`${this._apiBase}${url}`);
+    let authorization;
+    if (localStorage.getItem('token')) {
+      authorization = { "Authorization": `Token ${localStorage.getItem('token')}` };
+    }
+    const res = await fetch(`${this._apiBase}${url}`, {
+      headers: authorization
+    });
     if (!res.ok) {
       throw new Error(`Could not fetch ${url}` + `, received ${res.status}`);
     }
     return await res.json();
   };
 
-  getArticlesList = async (offset, author = '') => {
+  getArticlesList = async (offset, author = '', feed) => {
     if (author !== '') {
       author = `author=${author}&`;
     }
-    const res = await this.getResource(`/articles?${author}limit=10&offset=${offset}`);
+    const res = await this.getResource(`/articles${feed}?${author}limit=10&offset=${offset}`);
     //const result = res.map(this._transformPerson);
     return res;
   };
@@ -94,6 +100,28 @@ class SwapService {
       }
     }
     const res = await this.postLoggedInResource('/articles/', data);
+    return res;
+  }
+
+  postFollow = async (username) => {
+    const res = await this.postLoggedInResource(`/profiles/${username}/follow`, {});
+    return res;
+  }
+
+  deleteLoggedInResource = async (url, data) => {
+    const res = await fetch(`${this._apiBase}${url}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        "Authorization": `Token ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(data)
+    });
+    return await res.json();
+  }
+
+  deleteFollow = async (username) => {
+    const res = await this.deleteLoggedInResource(`/profiles/${username}/follow`, {});
     return res;
   }
 }

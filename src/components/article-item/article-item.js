@@ -18,6 +18,7 @@ const ArticleItem = ({
     updatedAt,
   }
 }) => {
+
   return (
     <div className='article-item'>
       <Like favorited={favorited} favoritesCount={favoritesCount} />

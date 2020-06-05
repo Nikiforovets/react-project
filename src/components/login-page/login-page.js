@@ -25,11 +25,12 @@ class LoginPage extends React.Component {
                 } else {
                     this.setState({
                         errors: ''
-                    })
+                    });
                     localStorage.setItem('token', data.user.token);
                     this.swapService.getCurrentUserInfo().then((data) => {
                         this.props.setUserData(data);
                     });
+                    this.props.history.push('/');
                 }
             });
         this.setState({

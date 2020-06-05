@@ -26,3 +26,18 @@
   margin-left: 20%;
   margin-right: 20%;
 }
+
+.tab-panel{
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 20%;
+}
+
+.tab-panel button{
+  font-size: 16px;
+  color: gray;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  padding: 15px;
+}

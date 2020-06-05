@@ -3,7 +3,6 @@ import { USER_CREATED, SET_USER_DATA, LIST_LOADED, LIST_LOADING, CHANGE_OFFSET, 
 const initialState = {
   articles: [],
   articlesLimit: 10,
-  articlesOffset: 0,
   articlesCount: 0,
   pageLoading: false,
   listLoading: false,
@@ -27,8 +26,7 @@ const reducer = (state = initialState, action) => {
     case CHANGE_OFFSET:
       return {
         ...state,
-        articlesOffset: (action.payload - 1) * state.articlesLimit,
-        currentPage: action.payload,
+        currentPage: action.payload
       };
     case PAGE_LOADING:
       return {
