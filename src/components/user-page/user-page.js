@@ -24,7 +24,6 @@ class UserPage extends React.Component {
 
     render() {
         const { loading, userProfileData, userProfileData: { profile } } = this.props;
-        console.log(loading, userProfileData.length);
         if (loading === true || userProfileData.length === 0) {
             return <Spinner />;
         }
@@ -35,7 +34,7 @@ class UserPage extends React.Component {
                     <img className='author-image' alt='author' src={profile.image} />
                     <h3>{profile.username}</h3>
                     <div>
-                        <Follow following={profile.following} username={profile.username} />
+                        <Follow following={profile.following} username={profile.username} history={this.props.history} />
                     </div>
                 </div>
                 <div>

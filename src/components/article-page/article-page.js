@@ -34,7 +34,7 @@ class ArticlePage extends React.Component {
     }
     let articleControl =
       <>
-        <Follow following={article.author.following} username={article.author.username} />
+        <Follow following={article.author.following} username={article.author.username} history={this.props.history} />
         <Like favoritesCount={article.favoritesCount} favorited={article.favorited} label='Favorite article' />
       </>
     if (loggedInUserData) {

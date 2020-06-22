@@ -47,7 +47,6 @@ class ArticleList extends React.Component {
 
   render = () => {
     const { articlesCount, articlesLimit, currentPage, author } = this.props;
-    console.log(author);
     let pagesList = [];
     let tabs;
     if (!author) {
