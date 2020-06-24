@@ -15,12 +15,11 @@ class SwapService {
     return await res.json();
   };
 
-  getArticlesList = async (offset, author = '', feed) => {
+  getArticlesList = async (offset, author = '', url) => {
     if (author !== '') {
-      author = `author=${author}&`;
+      author = `${author}&`;
     }
-    const res = await this.getResource(`/articles${feed}?${author}limit=10&offset=${offset}`);
-    //const result = res.map(this._transformPerson);
+    const res = await this.getResource(`/articles${url}${author}limit=10&offset=${offset}`);
     return res;
   };
 

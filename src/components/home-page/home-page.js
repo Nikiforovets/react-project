@@ -3,10 +3,6 @@ import ArticleList from '../article-list';
 
 const HomePage = ({ history }) => {
 
-    const redirect = () => {
-        history.push('/login');
-    }
-
     let banner = null;
     if (!localStorage.getItem('token')) {
         banner = <div className='banner'>
@@ -15,10 +11,24 @@ const HomePage = ({ history }) => {
         </div>
     }
 
+    const yourFeed = {
+        url: '/feed?',
+        name: 'Your Feed',
+        identificator: 'your-feed',
+        requireAuthorization: true
+    }
+
+    const globalFeed = {
+        url: '?',
+        name: 'Global Feed',
+        identificator: 'global-feed',
+        requireAuthorization: false
+    }
+
     return (
         <div>
             {banner}
-            <ArticleList redirect={redirect} />
+            <ArticleList history={history} firstTab={yourFeed} secondTab={globalFeed} />
         </div >)
 
 }

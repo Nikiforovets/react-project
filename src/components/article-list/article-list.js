@@ -10,54 +10,50 @@ import './article-list.css';
 class ArticleList extends React.Component {
   swapService = new SwapService();
 
-  state = {
-    feed: ''
-  }
-
   componentDidMount = () => {
-    const { listLoaded, listLoading, author } = this.props;
-    listLoading();
-    this.swapService.getArticlesList(0, author, '').then((data) => {
-      listLoaded(data.articles, data.articlesCount);
-    });
+    const { firstTab, secondTab } = this.props;
+    if ((firstTab.requireAuthorization && localStorage.getItem('token')) || (!firstTab.requireAuthorization)) {
+      this.changePage(1, firstTab.url);
+    } else {
+      this.changePage(1, secondTab.url);
+    }
   };
 
-  changePage = (id, feed = '') => {
+  changePage = (id, url = '?') => {
     const { changeOffset, listLoaded, listLoading, author } = this.props;
     listLoading();
     changeOffset(id);
-    this.swapService.getArticlesList((id - 1) * 10, author, feed).then((data) => {
+    this.swapService.getArticlesList((id - 1) * 10, author, url).then((data) => {
       listLoaded(data.articles, data.articlesCount);
     });
   };
 
-  showGlobalFeed = (e) => {
-    this.changePage(1, '');
-    this.setState({ feed: '' })
-  }
-
-  showYourFeed = (e) => {
-    if (localStorage.getItem('token')) {
-      this.changePage(1, '/feed');
-      this.setState({ feed: '/feed' })
+  clickOnTab = (e) => {
+    const { firstTab, secondTab } = this.props;
+    if (e.target.className == 'first-tab') {
+      if ((firstTab.requireAuthorization && localStorage.getItem('token')) || (!firstTab.requireAuthorization)) {
+      } else {
+        this.props.history.push('/login');
+      }
     } else {
-      this.props.redirect();
+      if ((secondTab.requireAuthorization && localStorage.getItem('token')) || (!secondTab.requireAuthorization)) {
+        this.changePage(1, secondTab.url);
+      } else {
+        this.props.history.push('/login');
+      }
     }
   }
 
   render = () => {
-    const { articlesCount, articlesLimit, currentPage, author } = this.props;
+    const { articlesCount, articlesLimit, currentPage, author, firstTab, secondTab } = this.props;
     let pagesList = [];
     let tabs;
-    if (!author) {
-      tabs =
-        <div className='tab-panel'>
-          <button className='your-feed' onClick={this.showYourFeed}>Your feed</button>
-          <button className='global-feed' onClick={this.showGlobalFeed}>Global feed</button>
-        </div>
-    } else {
-      tabs = '';
-    }
+
+    tabs =
+      <div className='tab-panel'>
+        <button className='first-tab' onClick={this.clickOnTab}>{firstTab.name}</button>
+        <button className='second-tab' onClick={this.clickOnTab}>{secondTab.name}</button>
+      </div>
 
     for (let i = 1; i <= (articlesCount / articlesLimit) + 1; i++) {
       pagesList.push(i);

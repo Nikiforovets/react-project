@@ -22,6 +22,20 @@ class UserPage extends React.Component {
         });
     }
 
+    myPosts = {
+        url: '?author=',
+        name: 'My Posts',
+        identificator: 'my-posts',
+        requireAuthorization: false
+    }
+
+    favoritedPosts = {
+        url: '?favorited=',
+        name: 'Favorited Posts',
+        identificator: 'favorited-posts',
+        requireAuthorization: false
+    }
+
     render() {
         const { loading, userProfileData, userProfileData: { profile } } = this.props;
         if (loading === true || userProfileData.length === 0) {
@@ -38,7 +52,7 @@ class UserPage extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <ArticleList author={profile.username} />
+                    <ArticleList author={profile.username} firstTab={this.myPosts} secondTab={this.favoritedPosts} />
                 </div>
             </div >
         )
