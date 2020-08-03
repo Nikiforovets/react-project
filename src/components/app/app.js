@@ -25,7 +25,7 @@ const App = () => {
             <Route path='/register' component={RegisterPage} />
             <Route path='/editor' component={NewArticlePage} />
             <Route path='/settings' component={Settings} />
-            <Route render={() => <h1>Page not fond</h1>} />
+            <Route render={() => <h1>Page not found</h1>} />
           </Switch>
         </section>
       </div>

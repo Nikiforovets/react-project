@@ -11,6 +11,11 @@
     margin-bottom: 0px;
 }
 
+.bio{
+    display: block;
+    margin-top: 10px;
+}
+
 .user-page-banner div{
     float: right;
     margin-right: 50px;

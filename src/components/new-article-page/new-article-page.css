@@ -21,6 +21,11 @@
     border: solid lightgray 1px;
     border-radius: 4px;
     margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.article-form textarea{
+    resize: none;
 }
 
 .article-form button {
@@ -31,4 +36,6 @@
     border-radius: 4px;
     padding: 10px;
     float: right;
+    margin-right: 20px; 
+    margin-top: 20px;
 }

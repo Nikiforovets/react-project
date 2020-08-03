@@ -40,4 +40,21 @@
   cursor: pointer;
   background-color: white;
   padding: 15px;
+  padding-bottom: 0px;
+  outline: none;
+}
+
+.tab-panel .current-tab{
+  color: #5cb85c;
+}
+
+.tab-panel .current-tab::after{
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: #5cb85c;
+  margin-top: 10px;
+  position: relative;
+  top: 1px;
 }

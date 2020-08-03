@@ -47,6 +47,7 @@ class UserPage extends React.Component {
                 <div className='user-page-banner'>
                     <img className='author-image' alt='author' src={profile.image} />
                     <h3>{profile.username}</h3>
+                    <span className='bio'>{profile.bio}</span>
                     <div>
                         <Follow following={profile.following} username={profile.username} history={this.props.history} />
                     </div>

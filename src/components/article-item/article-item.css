@@ -13,7 +13,7 @@ a {
   height: 1px;
   background-color: lightgray;
   margin-bottom: 25px;
-  margin-top: 25px;
+  
 }
 
 .article-data a {
@@ -31,9 +31,10 @@ a {
   /* margin-bottom: 10px; */
 }
 
-.article-data a span{
+.article-data a .read-more{
   color: lightgray;
   font-size: 12px;
+  padding-bottom: 25px;
 }
 
 .article-data p {

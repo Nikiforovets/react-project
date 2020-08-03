@@ -15,7 +15,7 @@ class SwapService {
     return await res.json();
   };
 
-  getArticlesList = async (offset, author = '', url) => {
+  getArticlesList = async (offset, author = '', url = '?') => {
     if (author !== '') {
       author = `${author}&`;
     }
@@ -123,6 +123,37 @@ class SwapService {
     const res = await this.deleteLoggedInResource(`/profiles/${username}/follow`, {});
     return res;
   }
+
+  putLoggedInResource = async (url, data) => {
+    const res = await fetch(`${this._apiBase}${url}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        "Authorization": `Token ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(data)
+    });
+    return await res.json();
+  }
+
+  putSettings = async (bio, createdAt, email, id, image, password, updatedAt, username) => {
+    const data = {
+      user: {
+        bio: bio,
+        createdAt: createdAt,
+        email: email,
+        id: id,
+        image: image,
+        password: password,
+        token: localStorage.getItem('token'),
+        updatedAt: updatedAt,
+        username: username
+      }
+    }
+    const res = await this.putLoggedInResource('/user', data);
+    return res;
+  }
+
 }
 
 export default SwapService;

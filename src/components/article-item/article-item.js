@@ -29,7 +29,7 @@ const ArticleItem = ({
         <Link to={`/articles/${slug}`}>
           <h3>{title}</h3>
           <p>{description}</p>
-          <span>Read more...</span>
+          <div className='read-more'>Read more...</div>
         </Link>
       </div>
     </div>

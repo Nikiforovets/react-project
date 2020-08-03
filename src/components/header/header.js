@@ -8,7 +8,7 @@ import './header.css';
 class Header extends React.Component {
   swapService = new SwapService();
 
-  componentDidMount = () => {
+  componentWillMount = () => {
     if (localStorage.getItem('token')) {
       this.swapService.getCurrentUserInfo().then((data) => {
         this.props.setUserData(data);
@@ -32,7 +32,7 @@ class Header extends React.Component {
         <>
           <li><Link to={`/editor`}>New Article</Link></li>
           <li><Link to={`/settings`}>Settings</Link></li>
-          <li><Link to={`/`}>{username}</Link></li>
+          <li><Link to={`/profiles/${username}`}>{username}</Link></li>
         </>
     }
     return (

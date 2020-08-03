@@ -31,7 +31,6 @@ class NewArticlePage extends React.Component {
     };
 
     onSubmit = (e) => {
-        console.log('publish');
         const { title, description, text, tags } = this.state;
         e.preventDefault();
         this.swapService.postNewArticle(title, description, text, tags)
@@ -41,7 +40,6 @@ class NewArticlePage extends React.Component {
                         errors: data.errors
                     })
                 } else {
-                    console.log(data);
                     this.setState({
                         errors: ''
                     });
