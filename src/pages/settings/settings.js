@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SwapService from '../../services/swap-service'
 import { setUserData } from '../../actions';
 import { connect } from 'react-redux';
-import ErrorsValidation from '../errors-validation';
+import ErrorsValidation from '../../components/errors-validation';
 import { useDispatch, useSelector } from 'react-redux';
 import './settings.css';
 

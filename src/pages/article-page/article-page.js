@@ -3,10 +3,10 @@ import SwapService from '../../services/swap-service';
 import { connect } from 'react-redux';
 import { pageLoading, articleLoaded, setUserData } from '../../actions';
 import { withRouter } from "react-router-dom";
-import Spinner from '../spinner';
-import UserData from '../user-data';
-import Like from '../like';
-import Follow from '../follow';
+import Spinner from '../../components/spinner';
+import UserData from '../../components/user-data';
+import Like from '../../components/like';
+import Follow from '../../components/follow';
 import { Link } from 'react-router-dom';
 import './article-page.css';
 
@@ -34,8 +34,8 @@ class ArticlePage extends React.Component {
     }
     let articleControl =
       <>
-        <Follow following={article.author.following} username={article.author.username} history={this.props.history} />
-        <Like favoritesCount={article.favoritesCount} favorited={article.favorited} label='Favorite article' />
+        <Follow following={article.author.following} username={article.author.username} />
+        <Like favoritesCount={article.favoritesCount} favorited={article.favorited} slug={article.slug} label='Favorite article' />
       </>
     if (loggedInUserData) {
       if (article.author.username === loggedInUserData.user.username) {

@@ -3,12 +3,9 @@ import SwapService from '../../services/swap-service';
 import { connect } from 'react-redux';
 import { pageLoading, userDataLoaded } from '../../actions';
 import { withRouter } from "react-router-dom";
-import Spinner from '../spinner';
-import UserData from '../user-data';
-import ArticleList from '../article-list';
-import Like from '../like';
-import Follow from '../follow';
-import { Link } from 'react-router-dom';
+import Spinner from '../../components/spinner';
+import ArticleList from '../../components/article-list';
+import Follow from '../../components/follow';
 import './user-page.css';
 
 class UserPage extends React.Component {
@@ -37,7 +34,7 @@ class UserPage extends React.Component {
     }
 
     render() {
-        const { loading, userProfileData, userProfileData: { profile } } = this.props;
+        const { loading, userProfileData, userProfileData: { profile }, history } = this.props;
         if (loading === true || userProfileData.length === 0) {
             return <Spinner />;
         }
@@ -49,7 +46,7 @@ class UserPage extends React.Component {
                     <h3>{profile.username}</h3>
                     <span className='bio'>{profile.bio}</span>
                     <div>
-                        <Follow following={profile.following} username={profile.username} history={this.props.history} />
+                        <Follow following={profile.following} username={profile.username} />
                     </div>
                 </div>
                 <div>

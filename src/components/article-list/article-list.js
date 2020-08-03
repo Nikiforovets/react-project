@@ -5,6 +5,7 @@ import Spinner from '../spinner';
 import { connect } from 'react-redux';
 import { listLoaded, listLoading, changeOffset } from '../../actions';
 import PaginationItem from '../pagination';
+import { withRouter } from 'react-router-dom';
 import './article-list.css';
 
 class ArticleList extends React.Component {
@@ -128,4 +129,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ArticleList));

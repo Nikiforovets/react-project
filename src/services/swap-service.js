@@ -107,6 +107,12 @@ class SwapService {
     return res;
   }
 
+  postLike = async (title) => {
+    const res = await this.postLoggedInResource(`/articles/${title}/favorite`, {});
+    return res;
+  }
+
+
   deleteLoggedInResource = async (url, data) => {
     const res = await fetch(`${this._apiBase}${url}`, {
       method: "DELETE",
@@ -121,6 +127,11 @@ class SwapService {
 
   deleteFollow = async (username) => {
     const res = await this.deleteLoggedInResource(`/profiles/${username}/follow`, {});
+    return res;
+  }
+
+  deleteLike = async (title) => {
+    const res = await this.deleteLoggedInResource(`/articles/${title}/favorite`, {});
     return res;
   }
 

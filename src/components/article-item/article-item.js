@@ -15,13 +15,13 @@ const ArticleItem = ({
     slug,
     tagList,
     title,
-    updatedAt,
+    updatedAt
   }
 }) => {
 
   return (
     <div className='article-item'>
-      <Like favorited={favorited} favoritesCount={favoritesCount} />
+      <Like favorited={favorited} favoritesCount={favoritesCount} slug={slug} />
       <Link to={`/profiles/${author.username}`}>
         <UserData image={author.image} username={author.username} date={updatedAt} />
       </Link>

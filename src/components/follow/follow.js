@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SwapService from '../../services/swap-service';
+import { withRouter } from 'react-router-dom';
 import './follow.css';
 
 const Follow = ({ following, username = '', history }) => {
@@ -40,4 +41,4 @@ const Follow = ({ following, username = '', history }) => {
     );
 }
 
-export default Follow;
+export default withRouter(Follow);

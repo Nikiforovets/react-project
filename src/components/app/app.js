@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../header';
-import HomePage from '../home-page';
-import ArticlePage from '../article-page';
-import LoginPage from '../login-page';
-import RegisterPage from '../register-page';
-import UserPage from '../user-page';
-import NewArticlePage from '../new-article-page';
-import Settings from '../settings';
+import HomePage from '../../pages/home-page';
+import ArticlePage from '../../pages/article-page';
+import LoginPage from '../../pages/login-page';
+import RegisterPage from '../../pages/register-page';
+import UserPage from '../../pages/user-page';
+import NewArticlePage from '../../pages/new-article-page';
+import Settings from '../../pages/settings';
 import './app.css';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';

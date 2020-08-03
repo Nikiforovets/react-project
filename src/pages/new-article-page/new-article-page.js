@@ -2,7 +2,7 @@ import React from 'react';
 import './new-article-page.css';
 import SwapService from '../../services/swap-service';
 import { Router, browserHistory } from 'react-router';
-import ErrorsValidation from '../errors-validation';
+import ErrorsValidation from '../../components/errors-validation';
 
 class NewArticlePage extends React.Component {
     swapService = new SwapService();

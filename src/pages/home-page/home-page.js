@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticleList from '../article-list';
+import ArticleList from '../../components/article-list';
 
 const HomePage = ({ history }) => {
 
@@ -28,7 +28,7 @@ const HomePage = ({ history }) => {
     return (
         <div>
             {banner}
-            <ArticleList history={history} firstTab={yourFeed} secondTab={globalFeed} />
+            <ArticleList firstTab={yourFeed} secondTab={globalFeed} />
         </div >)
 
 }
